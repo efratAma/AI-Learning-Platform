@@ -1,0 +1,41 @@
+
+
+services:
+  db:
+    image: postgres:15
+    container_name: learning-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Ea0583250371
+      POSTGRES_DB: ai_learning
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: .
+    container_name: learning-backend
+    ports:
+      - "5000:5000"
+    environment:
+    
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: learning_platform
+      DB_USER: postgres
+      DB_PASSWORD: example
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    depends_on:
+      - db
+
+  frontend:
+    build: ./client
+    container_name: learning-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
