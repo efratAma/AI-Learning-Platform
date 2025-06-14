@@ -53,7 +53,7 @@ cd AI-Learning-Platform
 
 ### 1. Environment Variables
 
-Create a file named `.env` inside the `backend` directory with the following content:
+Create a file named `.env` inside the root directory with the following content:
 
 ```env
 PORT=5000
@@ -65,4 +65,6 @@ DB_PORT=5432
 ADMIN_PHONE=0583250371
 OPENAI_API_KEY=your_openai_key
 ```
+---
+REACT_APP_API_URL=http://localhost:3000
 
