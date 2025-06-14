@@ -1,8 +1,3 @@
-# AI Learning Platform
-
-Mini MVP – פרויקט פלטפורמת למידה מבוססת AI  
-**מפתחת:** אפרת עמא  
-**GitHub:** [AI-Learning-Platform](https://github.com/efratAma/AI-Learning-Platform.git)
 
 ---
 
