@@ -56,59 +56,15 @@ cd AI-Learning-Platform
 צרו קובץ בשם `.env` בתיקיית `backend` עם התוכן הבא:
 
 
-PORT=5000
-DB_HOST=learning-db
-DB_USER=postgres
+PORT=5000  
+
+DB_HOST=learning-db  
+
+DB_USER=postgres  
+
 DB_PASSWORD=Ea0583250371
 DB_NAME=ai_learning
 DB_PORT=5432
 ADMIN_PHONE=0583250371
 OPENAI_API_KEY=your_openai_key
 
----
-
-### `docker-compose.yml`
-
-```yaml
-version: '3.8'
-
-services:
-  db:
-    image: postgres:15
-    container_name: learning-db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Ea0583250371
-      POSTGRES_DB: ai_learning
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-  backend:
-    build: ./backend
-    container_name: learning-backend
-    ports:
-      - "5000:5000"
-    environment:
-      DB_HOST: learning-db
-      DB_PORT: 5432
-      DB_NAME: ai_learning
-      DB_USER: postgres
-      DB_PASSWORD: Ea0583250371
-      OPENAI_API_KEY: your_key_here
-      ADMIN_PHONE: 0583250371
-    depends_on:
-      - db
-
-  frontend:
-    build: ./client
-    container_name: learning-frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-
-volumes:
-  pgdata:
-```
